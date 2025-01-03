@@ -4,8 +4,8 @@ Welcome to the 100 Days of Move Challenge! This initiative is crafted to guide d
 
 | Day   | Project                | Description                                                | Completed |
 |-------|------------------------|------------------------------------------------------------|-----------|
-| Day 1 | Hello Blockchain       | Introduced debug::print() for logging "Hello, Blockchain!" to understand module creation. | [ ]       |
-| Day 2 | Structs and Data Modeling | Learn how to define and use structs for modeling data in Move. Example: Create a Book struct and a Library module with basic book management. | [ ]       |
+| Day 1 | Hello Blockchain       | Introduced debug::print() for logging "Hello, Blockchain!" to understand module creation. | [X]       |
+| Day 2 | Structs and Data Modeling | Learn how to define and use structs for modeling data in Move. Example: Create a Book struct and a Library module with basic book management. | []       |
 | Day 3 | Resources and Ownership | Understand Move's resource model and ownership rules. Example: Create a Coin resource and a Wallet module to manage coins. | [ ]       |
 | Day 4 | Capabilities and Access Control | Learn about resource capabilities like store, key, and drop. Example: Create an AdminControl module to restrict certain actions to administrators. | [ ]       |
 | Day 5 | Constants and Literals | Learn how to define and use constants and literals. Example: Create a Bank module with constant transaction fees and minimum deposit limits. | [ ]       |
