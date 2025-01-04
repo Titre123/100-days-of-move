@@ -5,7 +5,7 @@ Welcome to the 100 Days of Move Challenge! This initiative is crafted to guide d
 | Day   | Project                | Link                                                                 |
 |-------|------------------------|----------------------------------------------------------------------|
 | Day 1 | Hello Blockchain       | [documentation](https://github.com/Titre123/100-days-of-move/blob/main/Day-01-hello-blockchain/readme.md) |
-| Day 2 | Structs and Data Modeling | [documentation](#)                                                |
+| Day 2 | Structs and Data Modeling | [documentation](https://github.com/Titre123/100-days-of-move/blob/main/Day-02-structs-and-data-modeling/readme.md)                                                |
 <!-- | Day 3 | Resources and Ownership | [Readme](#)                                                         |
 | Day 4 | Capabilities and Access Control | [Readme](#)                                                  |
 | Day 5 | Constants and Literals  | [Readme](#)                                                         |

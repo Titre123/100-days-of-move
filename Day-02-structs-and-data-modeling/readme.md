@@ -211,8 +211,6 @@ module blockchain::structs {
     movement move test
     ```
 
-    ![aptos move test](screenshots/aptos_move_test.png)
-
     Here are examples of the `Book` struct printed using `debug::print`:
 
     ![Debug print showing struct](screenshots/debug_print.png)
