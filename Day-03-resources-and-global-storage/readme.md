@@ -91,8 +91,6 @@ public fun borrow_book_mut(addr: &address): Book
 
     ![aptos move compile](screenshots/aptos_move_compile.png)
 
-### Testing
-
 ### Deployment
 
 5. Publish the Move module to the blockchain using the following command:
@@ -111,23 +109,12 @@ public fun borrow_book_mut(addr: &address): Book
 
 This will execute all test functions in the module and display the debug output.
 
-## Key Differences from Traditional Resources
-
-1. **Copyable Resource**: Unlike typical Move resources, this Book can be freely copied, allowing multiple instances to exist simultaneously.
-
-2. **Disposable**: The `drop` ability means Books can be discarded without explicit destruction logic.
-
-3. **Return Values**: Instead of returning references, the functions return complete Book copies, enabling more flexible usage patterns but potentially increasing gas costs.
-
 ## Usage Considerations
 
-1. **Storage Costs**: Since the Book can be copied, care should be taken to manage storage efficiently and avoid unnecessary duplicates.
-
-2. **State Management**: Changes to copied Books won't affect the original stored version - explicit updates to storage are needed if persistence is required.
+1. **State Management**: Changes to copied Books will affect the original stored version in when using borrow_global_mut.
 
 3. **Error Handling**: The current implementation will abort if accessing non-existent Books - production code might want to add existence checks.
 
 ## Dependencies
-- `std::debug`: For debug functionality (though unused in current implementation)
 - `std::signer`: For account-related operations
 - `std::string`: For string handling in the Book struct
