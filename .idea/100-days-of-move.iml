@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/Day-01-hello-blockchain/build" />
       <excludeFolder url="file://$MODULE_DIR$/Day-02-structs-and-data-modeling/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Day-03-resources-and-global-storage/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

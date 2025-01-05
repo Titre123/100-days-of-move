@@ -13,7 +13,7 @@
   - `move_to<T>`: Publishes a resource to an account's on-chain storage.
   - `borrow_global<T>` and `borrow_global_mut<T>`: Grants a reference or mutable reference 
     to a resource stored in an account.
-  - `move_from<T>`: Moves (and thus removes) a resource from an account’s storage, 
+  - `move_from<T>`: Moves (and thus removes) a resource from an account storage, 
     allowing you to transfer it elsewhere (to another account).
   -------------------------------------------------------------------------------------
 */
@@ -21,37 +21,36 @@
 module blockchain::resources_and_storage {
     use std::debug;
     use std::signer;
-    use std::string::{self, utf8};
+    use std::string;
 
     // ---------------------------------------------------------------------------------
     // Define a `Book` as a resource with `has key, store`:
-    //   - `key`:   Required to publish this resource in an account’s storage.
+    //   - `key`:   Required to publish this resource in an account storage.
     //   - `store`: Allows storing the struct in variables or passing it around in functions.
     //
     // Note that it does NOT have `copy` or `drop`, so it behaves like a true resource:
     // you cannot duplicate (`copy`) or discard (`drop`) it without explicit logic.
     // ---------------------------------------------------------------------------------
-    struct Book has key, store {
+    struct Book has key, store, copy, drop {
         title: string::String,
         author: string::String
     }
 
     // ---------------------------------------------------------------------------------
-    // PUBLISH A BOOK
     //
-    // Creates a new `Book` resource and publishes (stores) it under the sender’s account.
+    // Creates a new `Book` resource and publishes (stores) it under the sender account.
     //
     // - `account`:  The signer reference for the account that will own the Book.
     // - `title`:    Title of the book as a Move `String`.
-    // - `author_name`: The author’s name as a Move `String`.
+    // - `author_name`: The author name as a Move `String`.
     //
     // `move_to<Book>(account, new_book)` places the resource in on-chain storage at 
     // the address represented by `account`.
     // ---------------------------------------------------------------------------------
-    public entry fun publish_book(account: &signer, title: string::String, author_name: string::String) {
+    fun init_module(account: &signer) {
         let new_book = Book {
-            title,
-            author: author_name
+            title: string::utf8(b"In an harrowed place"),  // Convert byte string to String type
+            author: string::utf8(b"James Spader")  // Initialize with empty string
         };
         move_to<Book>(account, new_book);
     }
@@ -65,8 +64,9 @@ module blockchain::resources_and_storage {
     // `acquires Book` tells Move that this function will read (borrow) the
     // `Book` resource from global storage.
     // ---------------------------------------------------------------------------------
-    public fun borrow_book(addr: &address) acquires Book: &Book {
-        borrow_global<Book>(addr)
+    public fun borrow_book(addr: &address): Book acquires Book {
+        let book = borrow_global<Book>(*addr);
+        *book
     }
 
     // ---------------------------------------------------------------------------------
@@ -75,19 +75,9 @@ module blockchain::resources_and_storage {
     // Returns a mutable reference to the `Book` resource at `addr`, allowing you to modify 
     // its fields without transferring ownership.
     // ---------------------------------------------------------------------------------
-    public fun borrow_book_mut(addr: &address) acquires Book: &mut Book {
-        borrow_global_mut<Book>(addr)
+    public fun borrow_book_mut(addr: &address): Book acquires Book {
+        let book = borrow_global_mut<Book>(*addr);
+        *book
     }
 
-    // ---------------------------------------------------------------------------------
-    // DEBUG BOOK
-    //
-    // A helper function to print the `title` and `author` fields of a `Book` at a given 
-    // address. This is read-only, so we just borrow a reference using `borrow_global`.
-    // ---------------------------------------------------------------------------------
-    public fun debug_book(addr: &address) {
-        let book_ref = borrow_global<Book>(addr);
-        debug::print(&book_ref.title);
-        debug::print(&book_ref.author);
-    }
 }
