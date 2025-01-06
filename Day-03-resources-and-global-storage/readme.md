@@ -107,8 +107,6 @@ public fun borrow_book_mut(addr: &address): Book
 
     ![aptos move publish](screenshots/aptos_move_publish.png)
 
-This will execute all test functions in the module and display the debug output.
-
 ## Usage Considerations
 
 1. **State Management**: Changes to copied Books will affect the original stored version in when using borrow_global_mut.

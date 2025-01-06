@@ -1,0 +1,16 @@
+[package]
+name = "Capabilities in Move"
+version = "1.0.0"
+authors = []
+
+[addresses]
+blockchain = "0xa8102a53d98b7f2affa45926e4b2dde5464994d88de8b019c3150aadec92d7b1"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-core.git"
+rev = "testnet"
+subdir = "aptos-move/framework/aptos-framework"
+
+[dev-dependencies]
