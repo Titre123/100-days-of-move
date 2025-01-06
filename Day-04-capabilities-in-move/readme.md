@@ -119,6 +119,9 @@ Generic resources can conditionally inherit abilities:
    - Resources without `drop` must be explicitly handled
    - `key` resources require careful management of global state
    - Generic resources should clearly document ability requirements
+
+## Compilation and Publishing of module
+
 ### Initialization
 
 1. Initialize your project by running the following command and choosing the `testnet` network:
