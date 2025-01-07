@@ -8,8 +8,8 @@ Welcome to the 100 Days of Move Challenge! This initiative is crafted to guide d
 | Day 2 | Structs and Data Modeling | [documentation](https://github.com/Titre123/100-days-of-move/blob/main/Day-02-structs-and-data-modeling/readme.md)                                                |
 | Day 3 | Resources and Global Storage | [documentation](https://github.com/Titre123/100-days-of-move/blob/main/Day-03-resources-and-global-storage/readme.md)                                                         |
 | Day 4 | Capabilities in Move | [documentation](#)                                                  |
-<!-- | Day 5 | Constants and Literals  | [Readme](#)                                                         |
-| Day 6 | Modules and Functions   | [Readme](#)                                                         |
+| Day 5 | Constants & Error Handling  | [documentation](#)                                                         |
+<!-- | Day 6 | Modules and Functions   | [Readme](#)                                                         |
 | Day 7 | Addresses and signer | [Readme](#)                                                    |
 | Day 8 | Error Handling          | [Readme](#)                                                         |
 | Day 9 | Events                  | [Readme](#)                                                         |
