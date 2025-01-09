@@ -9,7 +9,7 @@ Welcome to the 100 Days of Move Challenge! This initiative is crafted to guide d
 | Day 3 | Resources and Global Storage | [documentation](https://github.com/Titre123/100-days-of-move/blob/main/Day-03-resources-and-global-storage/readme.md)                                                         |
 | Day 4 | Capabilities in Move | [documentation](https://github.com/Titre123/100-days-of-move/tree/main/Day-04-capabilities-in-move)                                                  |
 | Day 5 | Constants & Error Handling  | [documentation](https://github.com/Titre123/100-days-of-move/blob/main/Day-05-Constants-%26-Error-Handling/readme.md)                                                         |
-| Day 6 | Functions & Visibility   | [documentation](#)                                                         |
+| Day 6 | Functions & Visibility   | [documentation](https://github.com/Titre123/100-days-of-move/blob/main/Day-06-functions-and-visibility/readme.md)                                                         |
 <!-- | Day 7 | Addresses and signer | [Readme](#)                                                    |
 | Day 8 | Error Handling          | [Readme](#)                                                         |
 | Day 9 | Events                  | [Readme](#)                                                         |
