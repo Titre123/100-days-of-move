@@ -204,7 +204,7 @@ movement move compile
 
 # Run tests
 movement move test
-```
+```bash
 Running Move unit tests
 [debug] 50
 [ PASS    ] 0xa8102a53d98b7f2affa45926e4b2dde5464994d88de8b019c3150aadec92d7b1::FunctionAndVisibility::test_calculate
