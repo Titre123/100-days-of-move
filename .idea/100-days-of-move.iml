@@ -9,6 +9,9 @@
       <excludeFolder url="file://$MODULE_DIR$/Day-04-capabilities-in-move/build" />
       <excludeFolder url="file://$MODULE_DIR$/Day-05-constants-&amp;-error-handling/build" />
       <excludeFolder url="file://$MODULE_DIR$/Day-06-functions-and-visibility/build" />
+      <excludeFolder url="file://$MODULE_DIR$/day-07-addresses-and-signer/build" />
+      <excludeFolder url="file://$MODULE_DIR$/day-08-string-and-vector/build" />
+      <excludeFolder url="file://$MODULE_DIR$/day-09-tables-and-maps/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -11,9 +11,9 @@ Welcome to the 100 Days of Move Challenge! This initiative is crafted to guide d
 | Day 5 | Constants & Error Handling  | [documentation](https://github.com/Titre123/100-days-of-move/blob/main/Day-05-Constants-%26-Error-Handling/readme.md)                                                         |
 | Day 6 | Functions & Visibility   | [documentation](https://github.com/Titre123/100-days-of-move/blob/main/Day-06-functions-and-visibility/readme.md)                                                         |
 | Day 7 | Addresses and signer | [documentation](https://github.com/Titre123/100-days-of-move/blob/main/day-07-addresses-and-signer/readme.md)                                                    |
-<!-- | Day 10 | Vectors                | [Readme](#)                                                         |
-| Day 11 | Tables and Maps        | [Readme](#)                                                         |
-| Day 12 | Generics and Smart Vectors | [Readme](#)                                                    |
+| Day 8 | String & Vector                | [documentation]((https://github.com/Titre123/100-days-of-move/blob/main/day-08-string-and-vector/readme.md)                                                         |
+| Day 9 | Tables & Maps        | [documentation]((https://github.com/Titre123/100-days-of-move/blob/main/day-09-tables-and-maps/readme.md)                                                         |
+<!-- | Day 12 | Generics and Smart Vectors | [Readme](#)                                                    |
 | Day 8 | Error Handling          | [Readme](#)                                                         |
 | Day 9 | Events                  | [Readme](#)                                                         |
 
