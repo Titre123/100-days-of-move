@@ -185,11 +185,11 @@ fun test_map_operations_demo() {
 
 ```bash
 # Create a new directory for your project
-mkdir constants-module
+mkdir tables-and-maps
 cd constants-module
 
 # Initialize new Aptos project
-aptos init
+movement init
 
 # Select "testnet" when prompted for network
 # This will create a .aptos folder with your config

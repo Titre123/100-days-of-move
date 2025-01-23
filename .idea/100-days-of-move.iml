@@ -12,6 +12,10 @@
       <excludeFolder url="file://$MODULE_DIR$/day-07-addresses-and-signer/build" />
       <excludeFolder url="file://$MODULE_DIR$/day-08-string-and-vector/build" />
       <excludeFolder url="file://$MODULE_DIR$/day-09-tables-and-maps/build" />
+      <excludeFolder url="file://$MODULE_DIR$/day-10-smart-vectors/build" />
+      <excludeFolder url="file://$MODULE_DIR$/day-11-smart-table/build" />
+      <excludeFolder url="file://$MODULE_DIR$/day-12-events/build" />
+      <excludeFolder url="file://$MODULE_DIR$/day-13-resources-account/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

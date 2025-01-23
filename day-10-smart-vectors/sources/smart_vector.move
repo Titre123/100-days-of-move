@@ -53,7 +53,7 @@ module blockchain::SmartVector {
     // Advanced example: Populate the SmartVector with a large number of elements.
     public fun populate_large_vector(caller: &signer) acquires SmartVector {
         let smartvec = smart_vector::new<u64>();
-        let mut i = 0;
+        let i = 0;
 
         // Use a loop to add 1000 elements to the SmartVector.
         while (i <= 1000) {
