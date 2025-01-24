@@ -1,101 +1,52 @@
-# Move Language: Understanding Smart Vectors
+# Events in Move: Code-Specific Guide
 
-## Overview
-As blockchain applications evolve and scale, developers need more sophisticated tools for managing growing datasets efficiently. While basic data structures like vectors and simple maps work well for smaller applications, they often become bottlenecks when handling larger-scale operations.
-
-Move addresses these challenges through advanced data structures like Smart Vectors, Tables, and Simple Maps. These structures are specifically designed to optimize gas costs, improve performance, and handle large-scale data management effectively. Each structure offers unique advantages:
-
-- **Smart Vectors**: Optimized for large datasets through a bucket system, providing efficient scaling and reduced gas costs
-- **Tables**: Designed for direct key-value access with efficient storage management
-- **Simple Maps**: Perfect for in-memory operations and temporary data storage
-
-Understanding these data structures and their appropriate use cases is crucial for building efficient and scalable blockchain applications. The following documentation provides a comprehensive guide to implementing and utilizing these powerful tools in your Move projects.
-
-## Basic Structure
+## Event Structure
 ```move
-struct SmartObject has key {
-    value: SmartVector<u64>
+#[event]
+struct ValueAddedEvent has drop, store {
+    value: u64,
+    executor: address
 }
 ```
+- Marked with `#[event]` macro
+- Uses `drop` and `store` abilities
+- Captures two key pieces of information:
+  1. `value`: The numeric value changed
+  2. `executor`: Address of the account performing the action
 
-### Storage Pattern
+## Event Handle in Global Resource
 ```move
-public fun init_module(account: &signer) {
-    let smartvec = smart_vector::new<u64>();
-    // Initialize with values
-    smart_vector::push_back(&mut smartvec, 1);
-    smart_vector::push_back(&mut smartvec, 2);
-    smart_vector::push_back(&mut smartvec, 3);
-    
-    // Store in account storage
-    move_to(account, SmartObject {
-        value: smartvec
+struct GlobalData has key {
+    value: u64,
+    event_handle: event::EventHandle<ValueAddedEvent>
+}
+```
+- Stores both the value and an event handle
+- `event::EventHandle` allows tracking multiple events
+
+## Event Creation and Emission
+```move
+public entry fun add_to_value_from_global_storage(signer: &signer, value: u64) acquires GlobalData {
+    // Modify global data
+    let global_data = borrow_global_mut<GlobalData>(addr);
+    global_data.value = global_data.value + value;
+
+    // Emit event
+    event::emit_event(&mut global_data.event_handle, ValueAddedEvent {
+        value,
+        executor: addr
     });
 }
 ```
+- Modifies global storage value
+- Uses `event::emit_event()` to create an event
+- Passes event handle and event struct
 
-## Core Operations
-
-### 1. Creation and Initialization
-```move
-// Create a new SmartVector
-let smartvec = smart_vector::new<u64>();
-```
-
-### 2. Adding Elements
-```move
-// Add elements to the vector
-smart_vector::push_back(&mut smartvec, 1);
-smart_vector::push_back(&mut smartvec, 2);
-smart_vector::push_back(&mut smartvec, 3);
-```
-
-### 3. Accessing Length
-```move
-public fun get_length(addr: address): u64 acquires SmartVector {
-    let vec = &borrow_global<SmartVector>(addr).value;
-    smart_vector::length(vec)
-}
-```
-
-### 4. Large-Scale Operations
-```move
-public fun populate_large_vector(caller: &signer) acquires SmartVector {
-    let smartvec = smart_vector::new<u64>();
-    let mut i = 0;
-    
-    while (i <= 1000) {
-        smart_vector::push_back(&mut smartvec, i);
-        i = i + 1;
-    };
-    
-    move_to(caller, SmartVector {
-        value: smartvec
-    });
-}
-```
-
-## Testing
-Example test implementation:
-```move
-#[test(caller = @0x1)]
-fun test_smart_vector_operations(caller: &signer) acquires SmartVector {
-    // Initialize
-    init_module(caller);
-    
-    // Verify length
-    let len = get_length(address_of(caller));
-    print(&len); // Should output: 3
-}
-
-#[test(caller = @0x1)]
-fun test_large_vector(caller: &signer) acquires SmartVector {
-    // Test with large dataset
-    populate_large_vector(caller);
-    let len = get_length(address_of(caller));
-    print(&len); // Should output: 1001
-}
-```
+## Key Methods
+- `new_global()`: Initializes resource with event handle
+- `add_to_value_from_global_storage()`: Updates value and emits event
+- `check_global_storage_exists()`: Verifies resource presence
+- `get_value_from_global_storage()`: Retrieves stored value
 
 ## Initiaztion and Deployment
 
@@ -103,11 +54,11 @@ fun test_large_vector(caller: &signer) acquires SmartVector {
 
 ```bash
 # Create a new directory for your project
-mkdir constants-module
-cd constants-module
+mkdir events
+cd events
 
 # Initialize new Aptos project
-aptos init
+movement init
 
 # Select "testnet" when prompted for network
 # This will create a .aptos folder with your config
@@ -130,12 +81,11 @@ Copy your account address for the next step.
 Create or update `Move.toml` in your project root:
 ```toml
 [package]
-name = "constants_module"
+name = "Smart Table"
 version = "1.0.0"
 authors = ["Your Name"]
 
 [addresses]
-Movement = **"{YOUR_ADDRESS}"**
 blockchain = "0x1"
 
 [dependencies]
@@ -148,11 +98,11 @@ AptosFramework = { git = "https://github.com/aptos-labs/aptos-core.git", subdir 
 ```bash
 # Compile the module
 movement move compile
+```
 
 # Run tests
 movement move test
 ```bash
-Running Move unit tests
 ```
 
 ### Step 6: Publish to Testnet
@@ -160,4 +110,3 @@ Running Move unit tests
 ```bash
 movement move publish
 ```
-
