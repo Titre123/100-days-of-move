@@ -19,7 +19,7 @@ Here are the CLI commands to run for each method:
 
 ```bash
 # For create_resource_account
-movement account create-resource-account --seed hello
+movement account create-resource-account --seed polish
 ```
 
 ## Result
